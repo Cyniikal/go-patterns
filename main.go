@@ -5,6 +5,7 @@ import (
 	"go-patterns/decorator"
 	"go-patterns/factory"
 	"go-patterns/strategy"
+	"go-patterns/wrapper"
 )
 
 func main() {
@@ -15,6 +16,12 @@ func main() {
 	sc := decorator.StringRunner{Middleware: make([]decorator.StringMiddleware, 0)}
 	sc.AddMiddleware(decorator.ReverseString, decorator.ToLower)
 	fmt.Println("Decorator", sc.Run("Hello, WORLD!"))
+	fmt.Println()
+
+	// Wrapper
+	// Provide multiple different functions to make calling a complex function easier for general users of the API
+	fmt.Println("Wrapper:", wrapper.ModeOne("WRAPPER_TEST"))
+	fmt.Println("Wrapper:", wrapper.ModeTwo("WRAPPER_TEST"))
 	fmt.Println()
 
 	// Strategy
