@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go-patterns/decorator"
+	"go-patterns/facade"
 	"go-patterns/factory"
 	"go-patterns/strategy"
 	"go-patterns/wrapper"
@@ -39,4 +40,13 @@ func main() {
 	chocolateIceCream := factory.NewIceCream(factory.Chocolate)
 	fmt.Println("Factory:", vanillaIceCream)
 	fmt.Println("Factory:", chocolateIceCream)
+	fmt.Println()
+
+	// Facade
+	// Mask complex interactions of types with an easy-to-use API
+	// Similar to Factory in that it can be used to help ease initialization, but the intent is slightly different
+	complexThing := facade.CreateD(5)
+	fmt.Println("Facade:", facade.GetBaseVal(complexThing))
+	_ = facade.UpdateBaseVal(complexThing)
+	fmt.Println("Facade:", facade.GetBaseVal(complexThing))
 }
